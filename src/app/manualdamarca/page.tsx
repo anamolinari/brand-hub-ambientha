@@ -11,16 +11,16 @@ type Format = "svg" | "png";
 
 const logos = [
   {
-    id: "hor",
-    label: "Horizontal",
-    black: { svg: "/black/full-hor-b.svg", png: "/black/full-hor-b.png" },
-    white: { svg: "/white/full-hor-w.svg", png: "/white/full-hor-w.png" },
-  },
-  {
     id: "vert",
     label: "Vertical",
     black: { svg: "/black/full-vert-b.svg", png: "/black/full-vert-b.png" },
     white: { svg: "/white/full-vert-w.svg", png: "/white/full-vert-w.png" },
+  },
+  {
+    id: "hor",
+    label: "Horizontal",
+    black: { svg: "/black/full-hor-b.svg", png: "/black/full-hor-b.png" },
+    white: { svg: "/white/full-hor-w.svg", png: "/white/full-hor-w.png" },
   },
   {
     id: "ret",
@@ -68,40 +68,46 @@ export default function ManualDaMarca() {
         </h2>
 
         {/* Filtros */}
-        <div className="flex items-center gap-3 mb-6">
-          <span className="text-sm text-slate-500 ">Cor</span>
-          {(["black", "white"] as Color[]).map((c) => (
-            <button
-              key={c}
-              onClick={() => setColor(c)}
-              className={`px-4 py-1.5 rounded-full text-sm border transition-all cursor-pointer ${
-                color === c
-                  ? "bg-slate-800 text-white border-slate-800"
-                  : "text-slate-500 border-slate-200 hover:border-slate-400"
-              }`}
-            >
-              {c === "black" ? "Preto" : "Branco"}
-            </button>
-          ))}
+        <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-6">
+          {/* Cor */}
+          <div className="flex items-center gap-3">
+            <span className="text-sm text-slate-500">Cor</span>
+            {(["black", "white"] as Color[]).map((c) => (
+              <button
+                key={c}
+                onClick={() => setColor(c)}
+                className={`px-4 py-1.5 rounded-full text-sm border transition-all cursor-pointer ${
+                  color === c
+                    ? "bg-slate-800 text-white border-slate-800"
+                    : "text-slate-500 border-slate-200 hover:border-slate-400"
+                }`}
+              >
+                {c === "black" ? "Preto" : "Branco"}
+              </button>
+            ))}
+          </div>
 
-          <span className="text-sm text-slate-500 ml-4">Formato</span>
-          {(["svg", "png"] as Format[]).map((f) => (
-            <button
-              key={f}
-              onClick={() => setFormat(f)}
-              className={`px-4 py-1.5 rounded-full text-sm border transition-all cursor-pointer ${
-                format === f
-                  ? "bg-slate-800 text-white border-slate-800"
-                  : "text-slate-500 border-slate-200 hover:border-slate-400"
-              }`}
-            >
-              {f.toUpperCase()}
-            </button>
-          ))}
+          {/* Formato */}
+          <div className="flex items-center gap-3 sm:ml-4">
+            <span className="text-sm text-slate-500">Formato</span>
+            {(["svg", "png"] as Format[]).map((f) => (
+              <button
+                key={f}
+                onClick={() => setFormat(f)}
+                className={`px-4 py-1.5 rounded-full text-sm border transition-all cursor-pointer ${
+                  format === f
+                    ? "bg-slate-800 text-white border-slate-800"
+                    : "text-slate-500 border-slate-200 hover:border-slate-400"
+                }`}
+              >
+                {f.toUpperCase()}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Grid de logos */}
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {logos.map((logo) => {
             const src =
               color === "black" ? logo.black[format] : logo.white[format];
@@ -144,13 +150,14 @@ export default function ManualDaMarca() {
           </p>
         </div>
       </section>
+
       {/* Tipografia*/}
       <section className="mb-12">
         <h2 className="text-2xl font-semibold text-slate-800 mb-2">
           Tipografia
         </h2>
 
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="bg-white border border-slate-200 rounded-xl p-8">
             <p
               className="text-4xl text-slate-800 mb-2"
@@ -199,13 +206,14 @@ export default function ManualDaMarca() {
           </p>
         </div>
       </section>
+
       {/* Stories*/}
       <section className="mb-12">
         <h2 className="text-2xl font-semibold text-slate-800 mb-2">
           Guia de Stories
         </h2>
 
-        <div className="grid grid-cols-2 gap-4 mb-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div className="bg-white border border-slate-200 rounded-xl p-6">
             <h3 className="font-semibold text-slate-800 mb-4">Frequência</h3>
             <ul className="space-y-2 text-sm text-slate-600">
@@ -244,7 +252,7 @@ export default function ManualDaMarca() {
           </div>
         </div>
 
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="bg-white border border-slate-200 rounded-xl p-6">
             <h4 className="font-semibold text-slate-800 mb-2">📸 Produtos</h4>
             <p className="text-sm text-slate-600">

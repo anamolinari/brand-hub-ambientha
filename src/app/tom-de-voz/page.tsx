@@ -29,7 +29,7 @@ export default function TomDeVoz() {
           Pilares de comunicação
         </h2>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="bg-white border border-slate-200 rounded-xl p-6">
             <h3 className="font-semibold text-slate-800 mb-2">🤗 Acolhedora</h3>
             <p className="text-slate-600 text-sm">
@@ -102,7 +102,7 @@ export default function TomDeVoz() {
           Palavras e expressões
         </h2>
 
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Usar */}
           <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-6">
             <h3 className="font-semibold text-emerald-800 mb-4">✓ Usar</h3>
